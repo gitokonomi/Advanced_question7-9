@@ -1,0 +1,25 @@
+<h1>test</h1>
+
+
+  <!--星表示formのためし消す-->
+  <div id="post_raty"></div>
+  <script>
+    // scriptファイルをどのidの部分に配置するかを指定
+    let elem = document.querySelector('#post_raty');
+    let opt = {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      // starHalf: '<%= asset_path('star-half.png') %>',
+      // half: true,      
+      
+      readOnly: true,
+      score: 4,
+      // score: %= @book.score %>,
+      
+      // scoreName: 'book[score]',
+     };
+    raty(elem,opt);
+  </script>
+
+
