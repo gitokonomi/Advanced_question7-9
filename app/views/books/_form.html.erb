@@ -20,8 +20,8 @@
   <div id="post_raty"></div>
   <script>
     // scriptファイルをどのidの部分に配置するかを指定
-    let elem = document.querySelector('#post_raty');
-    let opt = {
+    const elem = document.querySelector('#post_raty');
+    const opt = {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
@@ -30,7 +30,6 @@
       
       // 下記）カラム保存用
       scoreName: 'book[score]',
-      //星画像の指定などのオプションをここに記述,
      };
     raty(elem,opt);
   </script>

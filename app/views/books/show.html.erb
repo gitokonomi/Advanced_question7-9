@@ -22,34 +22,35 @@
           </td>
           <td class="book-comments-counter">
             <%= render "book_comments/counter", book: @book %>
-          </td>
+          </td> 
 
 
 
 
           <!---------------星評価表示-------------->
           <td>
-          <!--評価-->
-          <div id="star-rate-<%= @book.id %>"></div>
-          <script>
-            // $('#star-rate-<%= @book.id %>').raty({
 
-                let elem = document.querySelector('#post_raty');
-    let opt = {
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      // starHalf: '<%= asset_path('star-half.png') %>',
-      // half: true,      
-      
-                    readOnly: true,
-                                  score: <%= @book.score %>,
-     };
-    raty(elem,opt);
-    
-          </script>
+            <div id="show_raty"></div>
+            <script>
+              // scriptファイルをどのidの部分に配置するかを指定
+              const elemn = document.querySelector('#show_raty');
+              const opti = {
+                // size     : 9,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                // starHalf: '<%= asset_path('star-half.png') %>',
+                // half: true,      
+                
+                readOnly: true,
+                score: <%= @book.score %>,
+               };
+              raty(elemn,opti);
+            </script>
+
           </td>
           <!------------------------------------------>
+
+
 
 
 
