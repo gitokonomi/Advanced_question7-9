@@ -22,6 +22,18 @@ class Book < ApplicationRecord
     end
   end
 
+  def self.search_tag_for(content)
+    # if method == 'perfect'
+      Book.where(tag: content)
+    # elsif method == 'forward'
+    #   Book.where('title LIKE ?', content+'%')
+    # elsif method == 'backward'
+    #   Book.where('title LIKE ?', '%'+content)
+    # else
+    #   Book.where('title LIKE ?', '%'+content+'%')
+    # end
+  end
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :score_count, -> {order(score: :desc)}

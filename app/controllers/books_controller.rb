@@ -12,13 +12,13 @@ class BooksController < ApplicationController
     if params[:latest]
       @books = Book.latest
     elsif params[:old]
-      @books = Book.old  
+      @books = Book.old
     elsif params[:score_count]
       @books = Book.score_count
-    else  
+    else
       @books = Book.all
     end
-    
+
     @book = Book.new
   end
 
@@ -58,7 +58,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :score)
+    params.require(:book).permit(:title, :body, :score, :tag)
   end
 
   def ensure_correct_user
