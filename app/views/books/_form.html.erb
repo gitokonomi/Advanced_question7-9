@@ -9,31 +9,32 @@
   </div>
 
 
-
-    <!-- 評価 -->
+<% if book.id === nil %>
   <div class="form-group row" id="star">
-    <%= f.label :score,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :score, id: :review_star %>
+    <%= f.label :score %>
+    <%= f.hidden_field :score, id: :review_star, class:'form-control' %>
   </div>
 
-  <!--星表示-->
   <div id="post_raty"></div>
   <script>
+    $(document).on('turbolinks:load', function() {
     // scriptファイルをどのidの部分に配置するかを指定
-    const elem = document.querySelector('#post_raty');
-    const opt = {
-      size     : 36,
+    let raty_elem = document.querySelector('#post_raty');
+    raty_elem.innerHTML = ""    
+    let option = {
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
-      // starHalf: '<%= asset_path('star-half.png') %>',
-      // half: true,      
-      
-      // 下記）カラム保存用
+      starHalf: '<%= asset_path('star-half.png') %>',
       scoreName: 'book[score]',
+      // half: true,      
      };
-    raty(elem,opt);
+    raty(raty_elem,option);
+  });
   </script>
-
+  
+<% else %>
+  <%= render "static_rate", book: book %>
+<% end %>
 
 
 
@@ -41,3 +42,4 @@
     <%= f.submit class: 'btn btn-success' %>
   </div>
 <% end %>
+
