@@ -8,7 +8,17 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+
+    if params[:latest]
+      @books = Book.latest
+    elsif params[:old]
+      @books = Book.old  
+    elsif params[:score_count]
+      @books = Book.score_count
+    else  
+      @books = Book.all
+    end
+    
     @book = Book.new
   end
 
@@ -41,6 +51,19 @@ class BooksController < ApplicationController
 
   def test
   end
+
+
+  def scope
+    if params[:new]
+      @books = Book.latest.page(params[:page]).per(PER_PAGE)
+    elsif params[:old]
+      @books = Book.old.page(params[:page]).per(PER_PAGE)
+    # elsif params[:score]
+      # books = Book.score_count
+      # @books =  Kaminari.paginate_array(events).page(params[:page]).per(PER_PAGE)
+    end
+  end
+
 
 
   private
