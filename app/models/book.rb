@@ -34,8 +34,4 @@ class Book < ApplicationRecord
     # end
   end
 
-  scope :latest, -> {order(created_at: :desc)}
-  scope :old, -> {order(created_at: :asc)}
-  scope :score_count, -> {order(score: :desc)}
-
 end
