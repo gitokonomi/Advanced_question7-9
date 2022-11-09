@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   devise_for :users
 
   root :to =>"homes#top"
   get "home/about"=>"homes#about"
   # test用ページ
   get "book/test"=> "books#test"
+
+  # チャット
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
+
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resources :book_comments, only: [:create, :destroy]
