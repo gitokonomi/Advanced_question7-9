@@ -22,9 +22,9 @@
           </td>
           <td class="book-comments-counter">
             <%= render "book_comments/counter", book: @book %>
-          </td> 
+          </td>
 
-
+          <td class="view-count">閲覧数: <%= @book.view_counts.count %></td>
 
 
           <!---------------星評価表示-------------->
@@ -39,8 +39,8 @@
                 starOff:  '<%= asset_path('star-off.png') %>',
                 starOn : '<%= asset_path('star-on.png') %>',
                 // starHalf: '<%= asset_path('star-half.png') %>',
-                // half: true,      
-                
+                // half: true,
+
                 readOnly: true,
                 score: <%= @book.score %>,
                };
